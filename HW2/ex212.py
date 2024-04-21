@@ -22,7 +22,8 @@ def DFT_slow(data):
   # Compute the DFT for each frequency bin
   for k in range(N):
       for n in range(N):
-          DFT[k] += 1 / N * data[n] * np.exp(-2j * np.pi * k * n / N)
+        # DFT[k] += data[n] * np.exp(-2j * np.pi * k * n / N)
+        DFT[k] += 1 / N * data[n] * np.exp(-2j * np.pi * k * n / N)
 
   return DFT
 
@@ -76,8 +77,8 @@ def DFT_2D(gray_img):
 
 if __name__ == '__main__':
     # ex1
-    # x = np.random.random(1024)
-    # print(np.allclose(DFT_slow(x), np.fft.fft(x)))
+    x = np.random.random(1024)
+    print(np.allclose(DFT_slow(x), np.fft.fft(x)))
 
     # ex2
     img = io_url.imread('https://img2.zergnet.com/2309662_300.jpg')
